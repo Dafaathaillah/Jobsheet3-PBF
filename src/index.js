@@ -7,12 +7,19 @@ import { render } from '@testing-library/react';
 import HelloComponent from './component/HelloComponent';
 import StateFullComponent from './container/StateFullComponent';
 import ListImage from './component/ListImage';
+import Footer from './component/Footer';
+import Test from './container/Test';
 
 // ReactDOM.render(<HelloComponent />, document.getElementById('root'));
 // ReactDOM.render(<StateFullComponent />, document.getElementById('root'));
 // ReactDOM.render(<ListImage />, document.getElementById('root'));
-// ReactDOM.render(<HeaderFooter />, document.getElementById('root'));
-ReactDOM.render(<App />, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Test />, document.getElementById('root'));
+
+//Test Footer and List 
+// ReactDOM.render(<Footer />, document.getElementById('root'));
+// ReactDOM.render(<ListImage />, document.getElementById('root'));
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
