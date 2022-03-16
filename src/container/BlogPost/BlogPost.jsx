@@ -13,7 +13,7 @@ class BlogPost extends Component {
         }
     }
     ambilDataDariServerAPI = () => {
-        fetch('http://localhost:3001/posts')
+        fetch('http://localhost:3000/posts')
             .then(response => response.json())
             .then(jsonHasilAmbilDariAPI => {
                 this.setState({
@@ -27,7 +27,7 @@ class BlogPost extends Component {
     }
 
     handleHapusArtikel = (data) => {
-        fetch(`http://localhost:3001/posts/${data}`, { method: 'DELETE' }) //alamat url api yang ingin di hapius datanya
+        fetch(`http://localhost:3000/posts/${data}`, { method: 'DELETE' }) //alamat url api yang ingin di hapius datanya
             .then(res => {
                 this.jsonHasilAmbilDariAPI()
             })
@@ -44,7 +44,7 @@ class BlogPost extends Component {
     }
 
     handleTombolSimpan = () => {
-        fetch('http://localhost:3001/posts', {
+        fetch('http://localhost:3000/posts', {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
