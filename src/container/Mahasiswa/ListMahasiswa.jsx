@@ -15,125 +15,108 @@ class ListMahasiswa extends Component {
     },
   };
 
-  getDataDariServerApi() {
-    fetch("http://localhost:3000/listMHS")
+  ambilDataDaraiServerAPI = () => {
+    fetch('http://localhost:3001/listMHS')
       .then(response => response.json())
       .then(jsonHasilAmbilDariAPI => {
         this.setState({
-          Mahasiswa: jsonHasilAmbilDariAPI,
+          ListMahasiswa: jsonHasilAmbilDariAPI
         })
       })
   }
-
   componentDidMount() {
     this.ambilDataDariServerAPI()
   }
 
-  handleTambahMahasiswa = (event) => {
-    let formInsertMahasiswa = { ...this.state.insertMahasiswa };
-    let timestamp = new Date().getTime();
-    formInsertMahasiswa["id"] = timestamp;
-    formInsertMahasiswa[event.target.name] = event.target.value;
+  actionDeleteData = (data) => {
+    fetch(`http://localhost:3001/listMHS/${data}`, { method: 'DELETE' }) //alamat url api yang ingin di hapius datanya
+      .then(res => {
+        this.jsonHasilAmbilDariAPI()
+      })
+  }
+
+  actionAddData = (event) => {
+    let formInsertDataMHS = { ...this.state.InsertDataMHS }
+    let timestamp = new Date().getTime()
+    formInsertDataMHS['id'] = timestamp
+    formInsertDataMHS[event.target.name] = event.target.value
     this.setState({
-      insertMahasiswa: formInsertMahasiswa,
-    });
-  };
+      InsertDataMHS: formInsertDataMHS
+    })
+  }
 
-  handleHapusMahasiswa = (data) => {
-    fetch(`http://localhost:3000/listMHS/${data}`, { method: "DELETE" }).then(
-      (res) => this.ambilDataDariServerAPI()
-    );
-  };
-
-  handleTombolSimpan = (e) => {
-    e.preventDefault();
-    fetch("http://localhost:3000/list.MHS", {
-      method: "post",
+  actionSaveDataMHS = () => {
+    fetch('http://localhost:3001/listMHS', {
+      method: 'POST',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(this.state.insertMahasiswa),
-    }).then((response) => {
-      this.ambilDataDariServerAPI();
-    });
-    this.setState({
-      insertMahasiswa: {
-        id: 1,
-        nim: "",
-        nama: "",
-        alamat: "",
-        hp: "",
-        angkatan: "",
-        status: "",
-      },
-    });
-  };
-  ender() {
+      body: JSON.stringify(this.state.addStudent),
+    })
+      .then((Response) => {
+        this.ambilDataDaraiServerAPI()
+      })
+  }
+
+  render() {
     return (
-      <div className="container">
-        <div className="row my-4">
-          <div className="col-12 mb-5">
-            <div className="card">
-              <div className="card-header">Form Tambah Mahasiswa</div>
-              <div className="card-body">
-                <div>
-                  <div className="form-group mb-2">
-                    <label htmlFor="nim">NIM</label>
-                    <input type="number" className="form-control" id="nim" name="nim" value={this.state.insertMahasiswa.nim} onChange={this.handleTambahMahasiswa}/>
-                  </div>
-                  <div className="form-group mb-2">
-                    <label htmlFor="nama">Nama</label>
-                    <input type="text" className="form-control" id="nama" name="nama" value={this.state.insertMahasiswa.nama} onChange={this.handleTambahMahasiswa}/>
-                  </div>
-                  <div className="form-group mb-2">
-                    <label htmlFor="hp">Nomor HP</label>
-                    <input type="number" className="form-control" id="hp" name="hp" value={this.state.insertMahasiswa.hp} onChange={this.handleTambahMahasiswa}/>
-                  </div>
-                  <div className="mb-2">
-                    <label htmlFor="angkatan">Tahun Angkatan</label>
-                    <select className="form-control" id="angkatan" name="angkatan" defaultValue={this.state.insertMahasiswa.angkatan} onChange={this.handleTambahMahasiswa}>
-                      <option value="" disabled>Pilih Tahun Angkatan</option>
-                      <option value="2017">2017</option>
-                      <option value="2018">2018</option>
-                      <option value="2019">2019</option>
-                      <option value="2020">2020</option>
-                      <option value="2021">2021</option>
-                      <option value="2022">2022</option>
-                    </select>
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor="alamat">Alamat</label>
-                    <textarea className="form-control" name="alamat" id="alamat" rows="3" value={this.state.insertMahasiswa.alamat} onChange={this.handleTambahMahasiswa}></textarea>
-                  </div>
-                  <div className="mb-2">
-                    <label htmlFor="status">Status</label>
-                    <select
-                      className="form-control" id="status" name="status" defaultValue={this.state.insertMahasiswa.status} onChange={this.handleTambahMahasiswa}>
-                      <option value="" disabled>Pilih Status</option>
-                      <option value="aktif">Aktif</option>
-                      <option value="lulus">Lulus</option>
-                      <option value="cuti">Cuti</option>
-                    </select>
-                  </div>
-                  <button type="submit" className="btn btn-primary" onClick={this.handleTombolSimpan}>Simpan</button>
-                </div>
-              </div>
-            </div>
+      <>
+        <div className='row g-3'>
+          <h5>Tambah Data Baru</h5>
+          <div className='col-md-6'>
+            <label htmlFor='nim' className='form-label'>NIM</label>
+            <input type='number' className='form-control' id='nim' name='nim' onChange={this.actionAddData} />
           </div>
-          <div className="col-12">
-            <h1>List Mahasiswa</h1>
-            <ul className="list-group">
-              {this.state.ListMahasiswa.map((mahasiswa) => {
-                return (
-                  <Mahasiswa key={mahasiswa.nim} data={mahasiswa} hapusData={this.handleHapusMahasiswa}/>
-                );
-              })}
-            </ul>
+          <div className='col-md-6'>
+            <label htmlFor='nama' className='form-label'>Nama</label>
+            <input type='text' className='form-control' id='nama' name='nama' onChange={this.actionAddData} />
+          </div>
+          <div className='col-md-12'>
+            <label htmlFor='alamat' className='form-label'>Alamat</label>
+            <textarea className='form-control' id='alamat' name='alamat' onChange={this.actionAddData}></textarea>
+          </div>
+          <div className='col-md-4'>
+            <label htmlFor='hp' className='form-label'>No. Handphone</label>
+            <input type='text' className='form-control' id='hp' name='hp' onChange={this.actionAddData} />
+          </div>
+          <div className='col-md-4'>
+            <label htmlFor='angkatan' className='form-label'>Angkatan</label>
+            <input type='number' className='form-control' id='angkatan' name='angkatan' onChange={this.actionAddData} />
+          </div>
+          <div className='col-md-4'>
+            <label htmlFor='status' className='form-label'>Status</label>
+            <select id='status' name='status' className='form-select' onChange={this.actionAddData} defaultValue='{DEFAULT}'>
+              <option value="DEFAULT">Choose...</option>
+              <option value='aktif'>Aktif</option>
+              <option value='cuti'>Cuti</option>
+              <option value='lulus'>Lulus</option>
+            </select>
+          </div>
+          <div className='col-12'>
+            <button type='submit' className='btn btn-primary' onClick={this.actionSaveDataMHS}>Simpan</button>
           </div>
         </div>
-      </div>
-    );
+        <hr />
+        <h5>Data Mahasiswa</h5>
+        <div className='row g-3'>
+          {
+            this.state.ListMahasiswa.map(mahasiswa => {
+              return <Mahasiswa
+                key={mahasiswa.nim}
+                nim={mahasiswa.nim}
+                nama={mahasiswa.nama}
+                alamat={mahasiswa.alamat}
+                hp={mahasiswa.hp}
+                idMahasiswa={mahasiswa.id}
+                angkatan={mahasiswa.angkatan}
+                status={mahasiswa.status}
+                deleteMahasiswa={this.actionDeleteData} />
+            })
+          }
+        </div>
+      </>
+    )
   }
 }
 export default ListMahasiswa;

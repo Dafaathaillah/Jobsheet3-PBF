@@ -5,13 +5,13 @@ const Mahasiswa = (props) => {
     return(
         <div>
             <li className="list-group-item">
-                <List title="NIM" value={props.data.nim} />
-                <List title="Nama" value={props.data.nama} />
-                <List title="Alamat" value={props.data.alamat} />
-                <List title="No. HP" value={props.data.hp} />
-                <List title="Angkatan" value={props.data.angkatan} />
-                <List title="Status" value={props.data.status} />
-                <button className="btn btn-sm btn-warning" onClick={() => props.hapusData(props.data.id)}>Hapus</button>
+                <List atribut="NIM" value={props.nim} />
+                <List atribut="Nama" value={props.nama} />
+                <List atribut="Alamat" value={props.alamat} />
+                <List atribut="No. HP" value={props.hp} />
+                <List atribut="Angkatan" value={props.angkatan} />
+                <List atribut="Status" value={props.status} />
+                <button className="btn btn-sm btn-danger" onClick={() => props.deleteData(props.id)}>Hapus</button>
             </li>
         </div>
     )

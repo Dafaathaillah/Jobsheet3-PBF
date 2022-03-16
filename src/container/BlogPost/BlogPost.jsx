@@ -13,7 +13,7 @@ class BlogPost extends Component {
         }
     }
     ambilDataDariServerAPI = () => {
-        fetch('http://localhost:3000/posts')
+        fetch('http://localhost:3001/posts')
             .then(response => response.json())
             .then(jsonHasilAmbilDariAPI => {
                 this.setState({
@@ -27,7 +27,7 @@ class BlogPost extends Component {
     }
 
     handleHapusArtikel = (data) => {
-        fetch(`http://localhost:3000/posts/${data}`, { method: 'DELETE' }) //alamat url api yang ingin di hapius datanya
+        fetch(`http://localhost:3001/posts/${data}`, { method: 'DELETE' }) //alamat url api yang ingin di hapius datanya
             .then(res => {
                 this.jsonHasilAmbilDariAPI()
             })
@@ -44,7 +44,7 @@ class BlogPost extends Component {
     }
 
     handleTombolSimpan = () => {
-        fetch('http://localhost:3000/posts', {
+        fetch('http://localhost:3001/posts', {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
@@ -59,34 +59,35 @@ class BlogPost extends Component {
 
     render() {
         return (
-            <div className='post-artikel'>
-                <div className='form pb-2 border-bottom'>
-                    <div className='form-group row'>
-                        <label htmlFor='title' className='col-sm-2 col-form-label'>Judul</label>
-                        <div className='col-sm-10'>
-                            <input type='text' className='form-control' id='title' name='title' onChange={this.handleTambahArtikel} />
-                        </div>
-                    </div>
-                    <div className='form-group row'>
-                        <label htmlFor='body' className='col-sm-2 col-form-label'>Isi</label>
-                        <div className='col-sm-10'>
-                            <textarea className='form-control' id='body' name='body' onChange={this.handleTambahArtikel}></textarea>
-                        </div>
-                    </div>
-                    <button type='submit' className='btn btn-primary' onClick={this.handleTombolSimpan}>Simpan</button>
-                </div>
-                <h2>Daftar Artikel</h2>
-                {
-                    this.state.listArtikel.map(artikel => {
-                        return <Post
-                            key={artikel.id}
-                            judul={artikel.title}
-                            isi={artikel.body}
-                            idArtikel={artikel.id}
-                            hapusArtikel={this.handleHapusArtikel} />
-                    })
-                }
-            </div>
+            // <div className='post-artikel'>
+            //     <div className='form pb-2 border-bottom'>
+            //         <div className='form-group row'>
+            //             <label htmlFor='title' className='col-sm-2 col-form-label'>Judul</label>
+            //             <div className='col-sm-10'>
+            //                 <input type='text' className='form-control' id='title' name='title' onChange={this.handleTambahArtikel} />
+            //             </div>
+            //         </div>
+            //         <div className='form-group row'>
+            //             <label htmlFor='body' className='col-sm-2 col-form-label'>Isi</label>
+            //             <div className='col-sm-10'>
+            //                 <textarea className='form-control' id='body' name='body' onChange={this.handleTambahArtikel}></textarea>
+            //             </div>
+            //         </div>
+            //         <button type='submit' className='btn btn-primary' onClick={this.handleTombolSimpan}>Simpan</button>
+            //     </div>
+            //     <h2>Daftar Artikel</h2>
+            //     {
+            //         this.state.listArtikel.map(artikel => {
+            //             return <Post
+            //                 key={artikel.id}
+            //                 judul={artikel.title}
+            //                 isi={artikel.body}
+            //                 idArtikel={artikel.id}
+            //                 hapusArtikel={this.handleHapusArtikel} />
+            //         })
+            //     }
+            // </div>
+            <h2>Daftar Artikel</h2>
         )
     }
 }

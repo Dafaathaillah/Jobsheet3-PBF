@@ -11,6 +11,7 @@ import Footer from './component/Footer';
 import Test from './container/Test';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import BlogPost from './container/BlogPost/BlogPost'
+import ListMahasiswa from './container/Mahasiswa/ListMahasiswa'
 
 // ReactDOM.render(<HelloComponent />, document.getElementById('root'));
 // ReactDOM.render(<StateFullComponent />, document.getElementById('root'));
@@ -23,7 +24,10 @@ import BlogPost from './container/BlogPost/BlogPost'
 // ReactDOM.render(<ListImage />, document.getElementById('root'));
 
 //Test BlogPost
- ReactDOM.render(<BlogPost />, document.getElementById('content'));
+// ReactDOM.render(<BlogPost />, document.getElementById('content'));
+
+ //Test Tugas
+ ReactDOM.render(<ListMahasiswa />, document.getElementById('content'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
