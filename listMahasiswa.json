@@ -7,6 +7,15 @@
       "hp": "08115542001",
       "angkatan": 2019,
       "status": "aktif"
+    },
+    {
+      "id": 1647513871981,
+      "nim": "1941720032",
+      "nama": "auful",
+      "alamat": "saidoajo",
+      "hp": "93183219",
+      "angkatan": "2019",
+      "status": "aktif"
     }
   ]
 }

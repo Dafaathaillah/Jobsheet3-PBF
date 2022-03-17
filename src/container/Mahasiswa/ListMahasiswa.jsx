@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+// import Mahasiswa from "../../component/Mahasiswa/Mahasiswa";
 import Mahasiswa from "../../component/Mahasiswa/Mahasiswa";
 
 class ListMahasiswa extends Component {
   state = {
     ListMahasiswa: [],
     insertMahasiswa: {
-      id: 1,
+      id: "",
       nim: "",
       nama: "",
       alamat: "",
@@ -25,7 +26,7 @@ class ListMahasiswa extends Component {
       })
   }
   componentDidMount() {
-    this.ambilDataDariServerAPI()
+    this.ambilDataDaraiServerAPI()
   }
 
   actionDeleteData = (data) => {
@@ -36,12 +37,12 @@ class ListMahasiswa extends Component {
   }
 
   actionAddData = (event) => {
-    let formInsertDataMHS = { ...this.state.InsertDataMHS }
+    let formInsertDataMHS = { ...this.state.insertMahasiswa }
     let timestamp = new Date().getTime()
     formInsertDataMHS['id'] = timestamp
     formInsertDataMHS[event.target.name] = event.target.value
     this.setState({
-      InsertDataMHS: formInsertDataMHS
+      insertMahasiswa: formInsertDataMHS
     })
   }
 
@@ -52,7 +53,7 @@ class ListMahasiswa extends Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(this.state.addStudent),
+      body: JSON.stringify(this.state.insertMahasiswa),
     })
       .then((Response) => {
         this.ambilDataDaraiServerAPI()
@@ -108,7 +109,6 @@ class ListMahasiswa extends Component {
                 nama={mahasiswa.nama}
                 alamat={mahasiswa.alamat}
                 hp={mahasiswa.hp}
-                idMahasiswa={mahasiswa.id}
                 angkatan={mahasiswa.angkatan}
                 status={mahasiswa.status}
                 deleteMahasiswa={this.actionDeleteData} />
@@ -116,6 +116,7 @@ class ListMahasiswa extends Component {
           }
         </div>
       </>
+     
     )
   }
 }
