@@ -16,7 +16,7 @@ import ListMahasiswa from './container/Mahasiswa/ListMahasiswa'
 // ReactDOM.render(<HelloComponent />, document.getElementById('root'));
 // ReactDOM.render(<StateFullComponent />, document.getElementById('root'));
 // ReactDOM.render(<ListImage />, document.getElementById('root'));
-// ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('content'));
 // ReactDOM.render(<Test />, document.getElementById('root'));
 
 //Test Footer and List 
@@ -27,7 +27,7 @@ import ListMahasiswa from './container/Mahasiswa/ListMahasiswa'
 // ReactDOM.render(<BlogPost />, document.getElementById('content'));
 
  //Test Tugas
- ReactDOM.render(<ListMahasiswa />, document.getElementById('content'));
+//  ReactDOM.render(<ListMahasiswa />, document.getElementById('content'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

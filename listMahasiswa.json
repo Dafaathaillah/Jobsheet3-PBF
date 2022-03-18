@@ -1,20 +1,39 @@
 {
   "listMHS": [
     {
-      "nim": 1941720170,
+      "id": "1941720170",
+      "nim": "1941720170",
       "nama": "Dafa Bintang Athaillah",
-      "alamat": "Kembang Kertas",
+      "alamat": "Delta Sari",
       "hp": "08115542001",
-      "angkatan": 2019,
+      "angkatan": "2017",
       "status": "aktif"
     },
     {
-      "id": 1647513871981,
-      "nim": "1941720032",
-      "nama": "auful",
-      "alamat": "saidoajo",
-      "hp": "93183219",
+      "id": "1921508022",
+      "nim": "1921508022",
+      "nama": "Alfadziri",
+      "alamat": "Samarinda",
+      "hp": "082165526133",
+      "angkatan": "2017",
+      "status": "cuti"
+    },
+    {
+      "id": "1941720171",
+      "nim": "1941720171",
+      "nama": "Novita Lestari",
+      "alamat": "Sidoarjo",
+      "hp": "09188266612",
       "angkatan": "2019",
+      "status": "aktif"
+    },
+    {
+      "id": "1941720173",
+      "nim": "1941720173",
+      "nama": "Moch Farid Maulana",
+      "alamat": "Sawojajar",
+      "hp": "09888266661",
+      "angkatan": "2018",
       "status": "aktif"
     }
   ]

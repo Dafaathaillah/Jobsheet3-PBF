@@ -2,7 +2,9 @@ import React from "react";
 
 const Header = () => {
     return(
-        <h1>Ini Adalah Header</h1>
+      <center>
+        <h1>Sistem Penginputan Data</h1>
+      </center>
     )
 }
 

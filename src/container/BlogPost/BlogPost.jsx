@@ -29,7 +29,7 @@ class BlogPost extends Component {
     handleHapusArtikel = (data) => {
         fetch(`http://localhost:3001/posts/${data}`, { method: 'DELETE' }) //alamat url api yang ingin di hapius datanya
             .then(res => {
-                this.jsonHasilAmbilDariAPI()
+                this.ambilDataDariServerAPI()
             })
     }
 
