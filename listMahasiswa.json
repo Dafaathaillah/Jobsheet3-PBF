@@ -10,15 +10,6 @@
       "status": "aktif"
     },
     {
-      "id": "1921508022",
-      "nim": "1921508022",
-      "nama": "Alfadziri",
-      "alamat": "Samarinda",
-      "hp": "082165526133",
-      "angkatan": "2017",
-      "status": "cuti"
-    },
-    {
       "id": "1941720171",
       "nim": "1941720171",
       "nama": "Novita Lestari",
@@ -33,6 +24,15 @@
       "nama": "Moch Farid Maulana",
       "alamat": "Sawojajar",
       "hp": "09888266661",
+      "angkatan": "2018",
+      "status": "aktif"
+    },
+    {
+      "id": "1941720174",
+      "nim": "1941720174",
+      "nama": "Alfadziri",
+      "alamat": "Samarinda",
+      "hp": "08271535521",
       "angkatan": "2018",
       "status": "aktif"
     }
