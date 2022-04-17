@@ -3,38 +3,12 @@
     {
       "id": "1941720170",
       "nim": "1941720170",
-      "nama": "Dafa Bintang Athaillah",
-      "alamat": "Delta Sari",
+      "nama": "Dafa Bintang",
+      "alamat": "malang",
       "hp": "08115542001",
-      "angkatan": "2017",
-      "status": "aktif"
-    },
-    {
-      "id": "1941720171",
-      "nim": "1941720171",
-      "nama": "Novita Lestari",
-      "alamat": "Sidoarjo",
-      "hp": "09188266612",
       "angkatan": "2019",
-      "status": "aktif"
-    },
-    {
-      "id": "1941720173",
-      "nim": "1941720173",
-      "nama": "Moch Farid Maulana",
-      "alamat": "Sawojajar",
-      "hp": "09888266661",
-      "angkatan": "2018",
-      "status": "aktif"
-    },
-    {
-      "id": "1941720174",
-      "nim": "1941720174",
-      "nama": "Alfadziri",
-      "alamat": "Samarinda",
-      "hp": "08271535521",
-      "angkatan": "2018",
-      "status": "aktif"
+      "status": "aktif",
+      "time": "2022-03-01"
     }
   ]
 }

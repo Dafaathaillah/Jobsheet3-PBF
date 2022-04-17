@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import Mahasiswa from "../../component/Mahasiswa/Mahasiswa";
 import Mahasiswa from "../../component/Mahasiswa/Mahasiswa";
+import API from "../../services";
 
 class ListMahasiswa extends Component {
   state = {
@@ -13,15 +14,14 @@ class ListMahasiswa extends Component {
       hp: "",
       angkatan: "",
       status: "",
+      time: "",
     },
   };
 
   ambilDataDaraiServerAPI = () => {
-    fetch('http://localhost:3001/listMHS')
-      .then(response => response.json())
-      .then(jsonHasilAmbilDariAPI => {
+        API.getMahasiswaData().then(result => {
         this.setState({
-          ListMahasiswa: jsonHasilAmbilDariAPI
+          ListMahasiswa: result
         })
       })
   }
@@ -30,11 +30,12 @@ class ListMahasiswa extends Component {
   }
 
   actionDeleteData = (data) => {
-    fetch(`http://localhost:3001/listMHS/${data}`, { method: 'DELETE' }) //alamat url api yang ingin di hapius datanya
-      .then(res => {
+     //alamat url api yang ingin di hapius datanya
+      API.deleteNewMahasiswa(data).then((response) => {
         this.ambilDataDaraiServerAPI()
       })
   }
+
 
   actionAddData = (event) => {
     let formInsertDataMHS = { ...this.state.insertMahasiswa }
@@ -47,14 +48,7 @@ class ListMahasiswa extends Component {
   }
 
   actionSaveDataMHS = () => {
-    fetch('http://localhost:3001/listMHS', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(this.state.insertMahasiswa),
-    })
+      API.getMahasiswaData(this.state.insertMahasiswa)
       .then((Response) => {
         this.ambilDataDaraiServerAPI()
       })
@@ -97,6 +91,10 @@ class ListMahasiswa extends Component {
                     <option value='lulus'>Lulus</option>
                   </select>
                 </div>
+                <div className='col-md-4'>
+                  <label htmlFor='time' className='form-label'>Date</label>
+                  <input type='date' className='form-control' id='time' name='time' onChange={this.actionAddData} />
+                </div>
               </div>
               <div>
                 <br />
@@ -120,6 +118,7 @@ class ListMahasiswa extends Component {
                 hp={mahasiswa.hp}
                 angkatan={mahasiswa.angkatan}
                 status={mahasiswa.status}
+                time={mahasiswa.time}
                 deleteData={this.actionDeleteData} />
             })
           }
